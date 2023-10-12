@@ -1,0 +1,25 @@
+{% extends 'base-page.html' %}
+{% load static %}
+
+{% block title %}
+    Минимальное и максимальное
+{% endblock title %}
+
+{% block container %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h2 class="text-center">Максимальная длина: {{ max_len.length__max }} м.</h2>
+            <h2 class="text-center">Максимальный вес: {{ max_weig.weight__max }} кг.</h2>
+
+            <h2 class="text-center">Минимальная длина: {{ min_len.length__min }} м.</h2>
+            <h2 class="text-center">Минимальный вес: {{ min_weig.weight__min }} кг.</h2>
+            <div class="text-center"><a href="javascript:history.go(-1)">Вернуться</a></div>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock container %}

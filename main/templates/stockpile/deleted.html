@@ -1,0 +1,38 @@
+{% extends 'base-page.html' %}
+{% load static %}
+
+{% block title %}
+    Главная
+{% endblock title %}
+
+{% block container %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h6 class="border-bottom pb-2 mb-0">Рулоны <span class="text-danger">УДАЛЁННЫЕ</span></h6>
+
+            {% for roll in object_list %}
+            {% if roll.date_removed != None %}
+            <div class="d-flex text-body-secondary pt-3">
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                    <div class="d-flex justify-content-between">
+                        <strong class="text-gray-dark">Номер {{ roll.id }}</strong>
+                        <form method="post" action="{% url 'delete_roll' roll.pk  %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-secondary d-inline-flex align-items-center">Удалить из БД</button>
+                        </form>
+                    </div>
+                    <span class="d-block">
+                        Длина {{ roll.length }} | Вес {{ roll.weight }} | Дата <span class="text-danger">УДАЛЕНИЯ</span>
+                        {{ roll.date_removed|date:"d E Y H:i" }}
+                    </span>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock container %}

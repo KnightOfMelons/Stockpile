@@ -1,0 +1,30 @@
+{% extends 'base-page.html' %}
+{% load static %}
+
+{% block title %}
+    ID результаты
+{% endblock title %}
+
+{% block container %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-4 mx-auto rounded p-3 border border-dark rounded">
+            {% if rolls %}
+                <ul>
+                    {% for roll in rolls %}
+                        <li>Номер {{ roll.id }} | Длина {{ roll.length }} | Вес {{ roll.weight }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Ничего не найдено.</p>
+            {% endif %}
+              <a class="text-center" href="javascript:history.go(-1)">Вернуться</a>
+          </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock container %}

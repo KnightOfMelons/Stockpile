@@ -1,0 +1,27 @@
+{% extends 'base-page.html' %}
+{% load static %}
+
+{% block title %}
+    Статистика
+{% endblock title %}
+
+{% block container %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h2 class="text-center"><a href="statsADDED">1. Количество добавленных рулонов</a></h2>
+            <h2 class="text-center"><a href="statsDELETED">2. Количество удалённых рулонов</a></h2>
+            <h2 class="text-center"><a href="statsAVERAGE">3. Средняя длина и вес рулонов, находившихся на складе в этот период</a></h2>
+            <h2 class="text-center"><a href="statsMAXMIN">4. Максимальная и минимальная длина и вес рулонов, находившихся на складе
+в этот период</a></h2>
+            <h2 class="text-center"><a href="statsSUM">5. Суммарный вес рулонов на складе за период</a></h2>
+            <h2 class="text-center"><a href="statsINTERVAL">6. Максимальный и минимальный промежуток между добавлением и удалением
+рулона</a></h2>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock container %}

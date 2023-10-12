@@ -1,0 +1,29 @@
+{% extends 'base-page.html' %}
+{% load static %}
+
+{% block title %}
+    Добавить
+{% endblock title %}
+
+{% block container %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3 mx-auto rounded p-3 border border-dark rounded">
+            <h2 class="text-center mb-3">Добавить рулон</h2>
+            <hr>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="text-center">
+                    <button class="btn btn-outline-secondary d-inline-flex align-items-center"
+                            type="submit">Сохранить
+                    </button>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock container %}

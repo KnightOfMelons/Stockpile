@@ -1,0 +1,21 @@
+{% extends 'base-page.html' %}
+{% load static %}
+
+{% block title %}
+    Количество добавленных
+{% endblock title %}
+
+{% block container %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h2 class="text-center">Всего: {{ rolls }}</h2>
+            <div class="text-center"><a href="javascript:history.go(-1)">Вернуться</a></div>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock container %}

@@ -1,0 +1,24 @@
+{% extends 'base-page.html' %}
+{% load static %}
+
+{% block title %}
+    Поиск
+{% endblock title %}
+
+{% block container %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h2 class="text-center"><a href="{% url 'search_rolls' %}">1. Поиск по id</a></h2>
+            <h2 class="text-center"><a href="{% url 'searchlength' %}">2. Поиск по длине</a></h2>
+            <h2 class="text-center"><a href="{% url 'searchweight' %}">3. Поиск по весу</a></h2>
+            <h2 class="text-center"><a href="{% url 'searchdataADDED' %}">4. Поиск по дате добавления</a></h2>
+            <h2 class="text-center"><a href="{% url 'searchdataDELETED' %}">5. Поиск по дате удаления</a></h2>
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock container %}

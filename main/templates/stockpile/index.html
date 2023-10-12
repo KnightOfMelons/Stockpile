@@ -1,0 +1,62 @@
+{% extends 'base-page.html' %}
+{% load static %}
+
+{% block title %}
+    Главная
+{% endblock title %}
+
+{% block container %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h6 class="border-bottom pb-2 mb-0">Рулоны</h6>
+
+            {% for roll in object_list %}
+            {% if roll.date_removed == None %}
+            <div class="d-flex text-body-secondary pt-3">
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                    <div class="d-flex justify-content-between">
+                        <strong class="text-gray-dark">Номер {{ roll.id }}</strong>
+                        <form action="{% url 'change_delete_time' roll.pk %}">
+                                <button class="btn btn-outline-secondary d-inline-flex align-items-center">
+                                    Удалить со склада
+                                </button>
+                        </form>
+                    </div>
+                    <span class="d-block">
+                        Длина {{ roll.length }} | Вес {{ roll.weight }} | Дата добавления {{ roll.date_added|date:"d E Y H:i" }}
+                    </span>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  document.getElementById('remove-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Отменить отправку формы (чтобы страница не обновлялась)
+
+    // Получить текущую дату и время
+    var currentDate = new Date();
+
+    // Привести дату к формату, совместимому с полем date_removed в модели RollDTO
+    var formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
+
+    // Создать элемент input с именем date_removed и установить его значение на текущую дату
+    var dateRemovedInput = document.createElement('input');
+    dateRemovedInput.setAttribute('type', 'hidden');
+    dateRemovedInput.setAttribute('name', 'date_removed');
+    dateRemovedInput.setAttribute('value', formattedDate);
+
+    // Добавить элемент input в форму
+    document.getElementById('remove-form').appendChild(dateRemovedInput);
+
+    // Отправить форму
+    document.getElementById('remove-form').submit();
+  });
+</script>
+{% endblock container %}
